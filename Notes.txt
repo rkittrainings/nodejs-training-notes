@@ -1,0 +1,286 @@
+-- NodeJS: NodeJS is an open-source runtime environment built on chrome's v8 javascript engine.
+It provides an event driven, non - blocking (asynchronous) i/o and cross - platform runtime environment for building scalable server - side applications using javascript.
+Here, modules, packages, files, streams, buffer, etc., 
+
+-- NodeJS can be used to build different types of applications such as command line application, web application, realtime - chat application, rest api server etc., 
+It is mainly used to build network programs like web servers, similar to Php, Java, or Asp.net
+
+-- Advantages:
+    1. NodeJS is an open - source framework under MIT licence (MIT licence is a free software licence originating at the Massachusetts Institute of Technology)
+    2. Uses javascript to build server side applications
+    3. Lighweight framework that includes bare minimum modules, other modules can be included as per the need of the applications
+    4. Asynchronous by default, so it performs faster than other frameworks
+    5. Cross - platform that runs on Win, Linux, Mac
+
+-- NodeJS Process Model:
+    - Traditional Web Server Model: In Traditional web server model, each request is handled by a dedicated thread from the thread pool., if no thread is available in the thread pool at any point of time then the request waits till the next available thread., 
+    dedicated thread executes a particular request and does not return to thread pool untill it comples the execution and return a response.
+
+    - NodeJS Process Model: NodeJS processes user requests differently when compared to a Traditional web server model., NodeJS runs in a single process and the application code runs in a single thread and thereaby needs less resources than other platforms
+    All the user requests to your web application will be handled by a single thread and all the i/o or long running job is peformd asynchronously for a particular request., 
+    An event loop is constantly watching for the events to be raised for an asynchronous job and executing the callback function when the job completes.,
+
+-- Setup NodeJS:
+    1. NodeJS
+    2. Node Package Manager
+    3. VS Code
+
+-- NodeJS Console: REPL
+    - REPL stands for Read - Eval - Print - Loop
+    - It is a quick and easy way to test simple NodeJS / javascript code
+    - To launch the REPL - open the Command Prompt
+    - .help, .save filename, .exit, .load filename, ctrl + c (terminate), .break, .clear, .editor
+
+-- NodeJS Basics:
+    - Primitive Data Types:
+        - Number
+        - String
+        - Boolean
+        - Undefined
+        - Null
+        - RegExp
+    
+    - Loose Typing: Javascript in NodeJS supports loose typing like browser's Javascript. Use var keyword to declare a variable of any type.
+    
+    - Object Literal: Object literal syntax:
+        var nodeobject = {
+            authorName: "dev", 
+            language: "Nodejs", 
+            version: 12
+        }
+    - Functions: Functions are first class in NodeJS javascript, similar to the browser's javascript. A function can have attributes and properties also. It can be treated like a class in Javascript.
+    
+    - Buffer: NodeJS includes an additional data type called Buffer. Buffer is mainly used to store binary data, while reading from a file or receiving packets over the network.
+    
+    - Process Object: Each NodeJS script runs in a process. It includes process object to get all the information about the current process of NodeJS application.
+    
+    - Defaults to Local: NodeJS Javascript is different from browser's Javascript, when it comes to global scope. In the browser's Javascript, variables declared without 'var' keyword become global. In NodeJS, everything becomes local by default.
+
+    - Access Global Scope: In a browser, global scope is the window object. In NodeJS, global object represents the global scope. To add something in global scope, you need to export it using 'export' or 'module.export'. 
+    
+    The same way, import modules / object using require() function to access it from the global scope. for ex., to export an object in NodeJS, use exports.name = object.
+    Now, you can import 'name' object using require() function and use it anywhere in NodeJS project. 
+
+    - NodeJS Modules: Module in NodeJS is a simple or complex functionality organized in single or multiple javascript files which can be reused throughout the NodeJS application.
+    
+    Each module, in NodeJS has its own context, so it cannot interfere with other modules or pollute global scope. Also, each module can be placed in a separate .js extension file under a separate folder.
+
+    NodeJS implements 'CommonJS modules standard'. CommonJS is a group of voluteers who define javascript standards for web server, desktop, console.
+
+    NodeJS Module Types:
+        1. Core Modules
+        2. Local Modules
+        3. Third Party Modules
+
+    1. Core Modules: NodeJS is a light weight framework. The core modules include bare minimum functionality of NodeJS. These core modules are complied into its binary distribution and load automatically., 
+
+        The list of core modules: 
+        
+        http - http module includes classes, methods and events to create NodeJS http server - http:// or https://
+        
+        url - url module includes methods for URL resolution and parsing - http://www.unicer.com/sign.html
+        
+        querystring - querystring module includes methods to deal with query string - http://www.unicer.com/542/hp or http://www.unicer.com/index.html?id=542&name=hp
+        
+        path - path module includes methods to deal with file paths
+        
+        fs - fs module includes classes, methods, events to work with i/o
+        
+        util - util module includes utility functions useful for programmers
+
+    - Load Core Modules: 
+        var module = require('module_name')
+
+    - Local Modules: local modules are modules created in your NodeJS application. These modules include different functionalities of your application in separate files and folders. You can also package it and distribute it via NPM, so that NodeJS community can use it., 
+    package -> group of modules -> group of functions
+    For ex., if you need to connect to like Express, Database (MongoDB) etc., and fetch data then you can create a module for it., which can be used or re-used in your application.
+
+    - Writing Simple Module: let's write simple logging module which logs the information, warning or error to the console.
+    In NodeJS, module should be place in a separate Javascript file. ex., Log.js
+
+    - Loading Local Module: To use local modules in your application, you need to load it using require() function in the same way as core module. 
+
+    - Export Literals: the 'exports' is an object. what ever we assigned to it as a module, it exposes.
+    syntax: module.exports = 'hello world'
+    
+    - Importing: var msg = require("./modName.js"); console.log("msg");
+    
+    - Export Object: the 'exports' is an object, so you can attach properties or methods to it. 
+    
+    - Accessing Data: module.exports = { ... } - see 11_AccessData.js
+    
+    - Export Function: You can attach an anonymous function to exports object.
+    
+    - Export Function as a Class: In Javascript, a function can be treated like as a class. 
+    
+    - Load Module from the Separate Folder: User, Person, Customer
+    var user = require("./User/User.js");
+    var person = require("./Person/Person.js);
+    var log = require("./dir/package.json");
+    
+    - Node Package Manager: NPM is a command line tool that installs, updates or uninstall NodeJS packages in the application. It is also an online repository for open - source packages. The node community around the world creates useful modules and publishes them as packages in this repository.
+    - official website: http://www.npmjs.com
+    
+    NPM is included with NodeJS installation. After you install NodeJS, verify NPM installation by writing the command > npm -v
+    If you want to update the NPM version, > npm install npm -g
+    To access NPM help, > npm help
+
+    NPM performs the operation in two modes: global and local. 
+    In global, NPM performs operations which effect all the NodeJS applications on the computer where as in the local, NPM performs operations for the particular local directory which affects an application in that directory only.
+
+    - Install Package Locally: > npm install <package_name>
+    ex., npm install express
+
+    - Add Dependency into Package.json: 
+        - we need to create the sample package.json
+        npm init (or) npm init -y 
+        - adding the new package
+        > npm install --save express
+
+    - Install Package Globally: > npm install -g express
+    - it is located into /User/local/lib/node_modules
+
+    - Update Package: > npm update <package_name>
+    - Uninstall Package: > npm uninstall <package_name>
+
+    - NodeJS Web Server: Create a Simple NodeJS Web Server and handle HTTP requests.
+    To access the web pages of any web application, we need a web server. 
+    The web server will handle all the 'http' requests for the web application., 
+    NodeJS provides capabilities to create the own web server will handle 'http' requests asynchronously.
+
+    - Create NodeJS Web Server: Create a simple web server that processes incoming requests asynchronously.
+    create a sample file: 14_server.js
+
+    - Handle HTTP request: the http.createServer() method includes 'request' and 'response' parameters which is supplied by NodeJS. 
+    The 'request' object can be used to get information about the current HTTP request. ex., url, request header and data.
+    The 'response' object can be used to send a response for a current HTTP request.
+
+    - Sending JSON Response: accessing the data in terms of JSON
+    {propertyName: itsValue}
+    'Content-Type': 'application/json'
+
+    - NodeJS File System: NodeJS includes 'fs' module to access physical file system. The 'fs' module is responsible for all the asynchronous or synchronous file  i/o operations.
+    let's have some common i/o operations
+
+        1. Reading a File: use fs.readFile() method to read the physical file in asynchronously
+        syntax: fs.readFile(fileName [, options], callback)
+        parameters: 
+            1. filename: Full path and name of the file as a string
+            2. options: The options parameter can be an object or string which can include encoding and flag. The default encoding is 'utf8' and the default flag is 'r'
+            3. callback: a function with two parameters: 'err' and 'fd'. This will get called when readFile operation completes. 
+        
+        2. Writing a File: use fs.writeFile() method to write data to a file. If file already exists then it overwrites the existing content otherwise it creates a new file and writes data into it. 
+        syntax: fs.writeFile(fileName, data[, options], callback)
+        parameters: 
+            1. filename
+            2. data: the content to be written in a file
+            3. callback
+
+        3. Appending Data into File: use fs.appendFile() method to append the data into the existing file.
+
+        4. Open a File:  we can open a file either for reading or writing. use fs.open()
+        syntax: fs.open(path, flags[, mode], callback)
+        parameters: 
+            path: the full path with name of the file as a string
+            flag: the flag to perform operation
+            mode: the mode for read, write or readwrite. Defaults to 0666 readwrite.
+            callback: a function with two parameters err and fd
+
+            flags: r, r+, rs, rs+, w, w+, ws, ws+, a, a+, ax+ (like a+, but fails if path exists)
+
+        5. Delete a File: to delete use fs.unlink() method
+        syntax: fs.unlink(path, callback)
+
+        Important methods of 'fs' module:
+        1. fs.readFile(fileName [, options], callback)
+        2. fs.writeFile(fileName, data [, options], callback)
+        3. fs.open(path, flags [, mode], callback)
+        4. fs.rename(oldPath, newPath, callback)
+        5. fs.chown(path, uid, gid, callback) - asynchronous chown
+        6. fs.stat(path, callback) - returns fs.stat object which includes important file statistics
+        7. fs.link(srcpath, dstpath, callback) - links file asynchronously
+        8. fs.symlink(destination, path [, type], callback) - symlink asynchronously
+        9. fs.rmdir(path, callback) - renames an existing directory
+        10. fs.mkdir(path [, mode], callback) - creates a new directory
+        11. fs.readdir(path, callback) - reads the content of the specified directory
+        12. fs.utimes(path, atime, mtime, callback) - changes the timestamp of the file
+        13. fs.exists(path, callback) - determines whether the specified file exists or not
+        14. fs.access(path [, mode], callback) - tests a user's permissions for the specified file
+        15. fs.appendFile(file, data [, option], callback) - appends new content to the existing file
+
+    - NodeJS Debug: Debugging the NodeJS application.
+    To debug, we have different tools:
+        1. Core NodeJS debugger
+        2. Node Inspector
+        3. Built-in debugger in IDE's
+
+        1. Core NodeJS debugger: NodeJS provides built-in non-graphic debugging tool that can be used on all platforms. It provides different commands for debugging NodeJS application.
+        > node debug fileName.js
+        to come out of debug command, ctrl + d
+
+        list of commands in debug:
+        next - stop at the next statement
+        cont - continue execute and stop at the debugger statement if any
+        step - step in function
+        out - step out of function
+        watch - add the expression or variable into watch - watch("data")
+        watcher - see the value of all expressions and variables added into watch
+        pause - pause running code
+
+        2. Node Inspector: we use the NodeJS Inspector tool to debug the NodeJS application.
+        The NodeJS Inspector is GUI based debugger. 
+        Install, the NodeJS Inspector
+        > npm install -g node-inspector
+        After installing, run it using > node-inspector
+        > node-inspector --web-port=5500
+        > node --debug-brk fileName
+
+        - NodeJS EventEmitter: NodeJS allows us to create and handle custom events easily by using events module. Event module includes EventEmitter class which can be used to raise and handle custom events.
+        
+        We imported the 'events' module and then created an object of EventEmitter class as 'em'., 
+        We then specify event handler function using on() function. The on() method requires the name of the event 'FirstEvent' to handle and callback function which is called when an event is raised.
+        
+        The emit() function raises the specified event. First parameter is the name of the event as a string and then arguments. An event can be emitted with zero or more arguments. 
+
+        You can also use addListener() method to subscribe for an event.
+
+        EventEmitter Methods:
+        emitter.addListener(event.listener) - adds a listener to the end of the listeners array for the specified event. No checks are maded to see if the listener has already beed added.
+
+        emitter.on(event.listener) - adds a listener to the end of the listeners array for the specified event. No checks are made to see if the listener has already been added. It can also be called as an alias of emitter.addListener()
+
+        emitter.once(event.listener) - adds a one time listener for the event. this listener is invoked only the next time the event is fired, after which it is removed.
+
+        emitter.removeListener(event.listener) - removes a listener from the listener array for the specified event. 
+
+        emitter.removeAllListeners([event]) - removes all listeners, or those of the specified event.
+
+        emitter.setMaxListeners(n) - by default EventEmitters will print a warning if more than the given 'n' no of events
+
+        emitter.getMaxListeners() - returns the current maximum listener value for the emitter which is either set by emitter.setMaxListeners(n) or defaults to EventEmitter.defaultMaxListeners
+
+        emitter.listeners(event) - returns a copy of the array of listeners for the specified event.
+
+        emitter.emit(event[, arg][, arg2][, ..]) - raise the specified events with the supplied arguments
+
+        emitter.listenerCount(type) - returns the number of listeners listening to the type of event.
+
+
+        - Common Patterns for EventEmitters: there are two common patterns that can be use to raise and bind an events using EventEmitters class in NodeJS
+            1. Return EventEmitter from a function
+            2. Extend the EventEmitter class
+
+            1. Return EventEmitter from a function: in this pattern, a constructor returns an EventEmitter object, which was used to emit events inside a function. This EventEmitter object can be used to subscribe for the events. 
+        
+
+        - Extend EventEmitter Class: we can extend the constructor function from EventEmitter class to emit the events.
+
+        - Frameworks for NodeJS:
+            Express.js - Express is a minimal and flexible NodeJS web application framework that provides a robust set of features for web and mobile applications. This is the most popular framework as of now for NodeJS.
+
+            Geddy, Locomotive, Koa, Total.js, Hapi.js, Keystone, Derby.js, Sails.js, Meteor, Mojito, Restify, ActionHero, Frisby, Chocoloate.js 
+
+
+        - Discussed the ExpressJS
+
+        - Database;
